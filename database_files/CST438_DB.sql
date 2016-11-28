@@ -1,29 +1,31 @@
-drop table sales;
-drop table employee;
-drop table products;
+drop table Sales;
+drop table Employee;
+drop table Products;
 
 
-create table employee (
-emp_id int(7) primary key,
-first_name varchar(50) not null,
-last_name varchar(50) not null,
-hire_date date
+create table Employee (
+empid int(7) primary key,
+firstname varchar(50) not null,
+lastname varchar(50) not null,
+hireDate date
 );
 
-create table products (
-product_id int(6) primary key,
-product_name varchar(50),
-product_price float,
+create table Products (
+productid int(6) primary key,
+productname varchar(50),
+productprice float,
 description varchar(200)
 );
 
-create table sales(
-emp_id int(7),
-foreign key (emp_id) references employee(emp_id),
-product_id int(6),
-foreign key (product_id) references products(product_id),
-qty_sold int,
-date_sold date
+create table Sales(
+id int not null auto_increment,
+primary key(id),
+empid int(7),
+foreign key (empid) references employee(empid),
+productid int(6),
+foreign key (productid) references products(productid),
+qtysold int,
+datesold date
 );
 
 insert into employee values
@@ -38,7 +40,7 @@ insert into products values
 (123454, 'thing-a-magig', 99.99, 'awesome'),
 (999999, 'whatcha-ma-call-it', 199.99, 'omfg');
 
-insert into sales values
+insert into sales (empid, productid, qtysold, datesold) values
 (1234567, 999999, 30, '2014/01/15'),
 (1234568, 999999, 66, '2014/01/15'),
 (1245670, 999999, 9, '2014/01/15'),
