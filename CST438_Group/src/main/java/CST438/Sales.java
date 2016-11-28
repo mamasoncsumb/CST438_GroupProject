@@ -1,9 +1,9 @@
 package CST438;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 @Entity
 public class Sales {
@@ -14,12 +14,12 @@ public class Sales {
 	private int productid;
 	private int empid;
 	private int qtysold;
-	private String datesold;
+	private Date datesold;
 	
 	
 	public Sales(){};
 	
-	public Sales(int empid, int productId, int qtySold, String dateSold)
+	public Sales(int empid, int productId, int qtySold, Date dateSold)
 	{
 		this.productid = productId;
 		this.empid = empid;
@@ -32,7 +32,7 @@ public class Sales {
 		this.qtysold = qtySold;
 	}
 	
-	public void setDateSold(String dateSold)
+	public void setDateSold(Date dateSold)
 	{
 		this.datesold = dateSold;
 	}
@@ -42,9 +42,19 @@ public class Sales {
 		return qtysold;
 	}
 	
-	public String getDateSold()
+	public Date getDateSold()
 	{
 		return datesold;
+	}
+	
+	public int getMonthSold()
+	{
+		return datesold.getMonth();
+	}
+	
+	public int getYearSold()
+	{
+		return datesold.getYear();
 	}
 	
 	public void setProductId(int productId)

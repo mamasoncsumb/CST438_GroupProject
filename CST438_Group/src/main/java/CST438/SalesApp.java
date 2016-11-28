@@ -16,6 +16,7 @@ public class SalesApp {
 	
 	public static List<Products> productList;
 	public static List<Sales> salesList;
+	public static List<Employee> employeeList;
 	
 	static EntityManagerFactory emf = Persistence.createEntityManagerFactory("myapp");
 	
@@ -30,6 +31,21 @@ public class SalesApp {
 		List<Products> result = (List<Products>)q.getResultList();
 		
 		this.productList = result;
+		
+		return result;
+	}
+	
+	@GET
+	@Path("/employee")
+	@Produces ({MediaType.APPLICATION_JSON})
+	public List<Employee> getEmployees()
+	{
+		EntityManager em = emf.createEntityManager();
+		Query q = em.createQuery("select e from Employee e");
+
+		List<Employee> result = (List<Employee>)q.getResultList();
+		
+		this.employeeList = result;
 		
 		return result;
 	}
@@ -59,7 +75,7 @@ public class SalesApp {
 			{
 				if(product.getProductid() == sale.getProductId())
 				{
-					System.out.println(product.getproductName() + " " + sale.getqtySold() + " " + sale.getDateSold());
+					System.out.println(product.getproductName() + " " + sale.getqtySold() + " " + sale.getMonthSold());
 				}
 			}
 		}
