@@ -1,10 +1,7 @@
 package CST438;
 
-import java.lang.reflect.Array;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.List;
 
 public class ExtractData {
@@ -17,14 +14,6 @@ public class ExtractData {
 		Map<String, Map<Integer, Integer[]>> mainMap = new HashMap<String, Map<Integer, Integer[]>>();
 		
 		Map<Integer, Integer[]> innerMap = new HashMap<Integer, Integer[]>();
-		
-		Integer[] myArray = new Integer[1];
-
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = 0;
-		}
 		
 		//loop through lists and set keys and associated values
 		for(Products p: products)
@@ -44,7 +33,15 @@ public class ExtractData {
 					
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
-					{
+					{		
+						Integer[] myArray = new Integer[1];
+
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -64,14 +61,6 @@ public class ExtractData {
 		
 		Map<Integer, Integer[]> innerMap = new HashMap<Integer, Integer[]>();
 		
-		Integer[] myArray = new Integer[1];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = 0;
-		}
-		
 		//loop through lists and set keys and associated values
 		for(Employee e: employee)
 		{
@@ -91,6 +80,14 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Integer[] myArray = new Integer[1];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = 0;
+						}
+					
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -109,14 +106,6 @@ public class ExtractData {
 		Map<String, Map<Integer, Integer[]>> mainMap = new HashMap<String, Map<Integer, Integer[]>>();
 		
 		Map<Integer, Integer[]> innerMap = new HashMap<Integer, Integer[]>();
-		
-		Integer[] myArray = new Integer[12];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = 0;
-		}
 		
 		//loop through lists and set keys and associated values
 		for(Products p: products)
@@ -137,7 +126,16 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Integer[] myArray = new Integer[12];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
+						
 					}
 					
 					//adds sold qty of products based on year and month sold
@@ -155,14 +153,6 @@ public class ExtractData {
 		Map<String, Map<Integer, Integer[]>> mainMap = new HashMap<String, Map<Integer, Integer[]>>();
 		
 		Map<Integer, Integer[]> innerMap = new HashMap<Integer, Integer[]>();
-		
-		Integer[] myArray = new Integer[12];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = 0;
-		}
 		
 		//loop through lists and set keys and associated values
 		for(Employee e: employee)
@@ -183,6 +173,14 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Integer[] myArray = new Integer[12];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -201,14 +199,6 @@ public class ExtractData {
 		Map<String, Map<Integer, Integer[]>> mainMap = new HashMap<String, Map<Integer, Integer[]>>();
 		
 		Map<Integer, Integer[]> innerMap = new HashMap<Integer, Integer[]>();
-		
-		Integer[] myArray = new Integer[12];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = 0;
-		}
 		
 		//loop through lists and set keys and associated values
 		for(Products p: products)
@@ -230,6 +220,14 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Integer[] myArray = new Integer[12];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -252,14 +250,6 @@ public class ExtractData {
 		
 		Map<Integer, Integer[]> innerMap = new HashMap<Integer, Integer[]>();
 		
-		Integer[] myArray = new Integer[4];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = 0;
-		}
-		
 		//loop through lists and set keys and associated values
 		for(Employee e: employee)
 		{
@@ -280,11 +270,18 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Integer[] myArray = new Integer[4];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = 0;
+						}
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
 					//adds sold qty of products by employee based on year and quarter
-					mainMap.get(mainKey).get(innerKey)[0] += (month == 1 || month == 2 || month == 3 ) ? s.getqtySold() : 0;
+					mainMap.get(mainKey).get(innerKey)[0] += ((month == 1) || (month == 2) || (month == 3) ) ? s.getqtySold() : 0;
 					mainMap.get(mainKey).get(innerKey)[1] += (month == 4 || month == 5 || month == 6 ) ? s.getqtySold() : 0;
 					mainMap.get(mainKey).get(innerKey)[2] += (month == 7 || month == 8 || month == 9 ) ? s.getqtySold() : 0;
 					mainMap.get(mainKey).get(innerKey)[3] += (month == 10 || month == 11 || month == 12 ) ? s.getqtySold() : 0;
@@ -301,14 +298,6 @@ public class ExtractData {
 		Map<String, Map<Integer, Float[]>> mainMap = new HashMap<String, Map<Integer, Float[]>>();
 		
 		Map<Integer, Float[]> innerMap = new HashMap<Integer, Float[]>();
-		
-		Float[] myArray = new Float[1];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = (float) 0;
-		}
 		
 		//loop through lists and set keys and associated values
 		for(Products p: products)
@@ -330,6 +319,14 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Float[] myArray = new Float[1];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = (float) 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -349,14 +346,6 @@ public class ExtractData {
 		
 		Map<Integer, Float[]> innerMap = new HashMap<Integer, Float[]>();
 		
-		Float[] myArray = new Float[1];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = (float) 0;
-		}
-		
 		//loop through lists and set keys and associated values
 		for(Employee e: employee)
 		{
@@ -384,6 +373,14 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Float[] myArray = new Float[1];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = (float) 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -402,14 +399,6 @@ public class ExtractData {
 		Map<String, Map<Integer, Float[]>> mainMap = new HashMap<String, Map<Integer, Float[]>>();
 		
 		Map<Integer, Float[]> innerMap = new HashMap<Integer, Float[]>();
-		
-		Float[] myArray = new Float[12];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = (float) 0;
-		}
 		
 		//loop through lists and set keys and associated values
 		for(Products p: products)
@@ -431,6 +420,14 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Float[] myArray = new Float[12];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = (float) 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -449,15 +446,7 @@ public class ExtractData {
 		Map<String, Map<Integer, Float[]>> mainMap = new HashMap<String, Map<Integer, Float[]>>();
 		
 		Map<Integer, Float[]> innerMap = new HashMap<Integer, Float[]>();
-		
-		Float[] myArray = new Float[12];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = (float) 0;
-		}
-		
+
 		//loop through lists and set keys and associated values
 		for(Employee e: employee)
 		{
@@ -485,6 +474,14 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Float[] myArray = new Float[12];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = (float) 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -503,14 +500,6 @@ public class ExtractData {
 		Map<String, Map<Integer, Float[]>> mainMap = new HashMap<String, Map<Integer, Float[]>>();
 		
 		Map<Integer, Float[]> innerMap = new HashMap<Integer, Float[]>();
-		
-		Float[] myArray = new Float[4];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = (float) 0;
-		}
 		
 		//loop through lists and set keys and associated values
 		for(Products p: products)
@@ -533,6 +522,15 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						
+						Float[] myArray = new Float[4];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = (float) 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -556,13 +554,6 @@ public class ExtractData {
 		
 		Map<Integer, Float[]> innerMap = new HashMap<Integer, Float[]>();
 		
-		Float[] myArray = new Float[4];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = (float) 0;
-		}
 		//loop through lists and set keys and associated values
 		for(Employee e: employee)
 		{
@@ -592,6 +583,13 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Float[] myArray = new Float[4];
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = (float) 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
@@ -615,13 +613,6 @@ public class ExtractData {
 		
 		Map<String, Integer[]> innerMap = new HashMap<String, Integer[]>();
 		
-		Integer[] myArray = new Integer[4];
-		
-		//initialize array values to 0
-		for (int i = 0; i < myArray.length; i++)
-		{
-			myArray[i] = 0;
-		}
 		//loop through lists and set keys and associated values
 		for(Employee e: employee)
 		{
@@ -650,6 +641,14 @@ public class ExtractData {
 					//assign new key if it does not exist in inner Map
 					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
 					{
+						Integer[] myArray = new Integer[4];
+						
+						//initialize array values to 0
+						for (int i = 0; i < myArray.length; i++)
+						{
+							myArray[i] = 0;
+						}
+						
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
