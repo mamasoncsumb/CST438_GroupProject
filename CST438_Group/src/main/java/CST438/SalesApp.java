@@ -1,7 +1,10 @@
 package CST438;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -62,8 +65,10 @@ public class SalesApp {
 		
 		this.salesList = result;
 		
-		testLists();
+		System.out.println("Year " + result.get(0).getYearSold());
 		
+		testLists();
+		testExtractData();
 		return result;
 	}
 	
@@ -80,5 +85,28 @@ public class SalesApp {
 			}
 		}
 	}
-
+	
+	public void testExtractData()
+	{
+		//initialize map to store return
+		Map<String, Map<Integer, Integer[]>> employeeMMYY = ExtractData.EmployeeSalesQtrly(SalesApp.employeeList, SalesApp.salesList);
+				
+		//loop through keys in main map
+		for(String key: employeeMMYY.keySet())
+		{
+			Map<Integer, Integer[]> innerMap = employeeMMYY.get(key);
+					
+			for(Integer innerKey : innerMap.keySet())
+			{
+				//get array from map value
+				Integer[] marray = (Integer[]) innerMap.get(innerKey);
+				
+				//loop through array and print values
+				for(int i = 0; i < marray.length; i++)
+				{
+					System.out.println("Employee " + key + " Q " + (i + 1) + " " + innerKey + " Sales: " + marray[i]);	
+				}
+			}			
+		}
+	}
 }
