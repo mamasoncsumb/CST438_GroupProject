@@ -1,0 +1,100 @@
+EXTRACT DATA Class
+
+The ExtractData class is responsible for take taking the data from the returned lists of the SalesApp class and placing it into a manageable structure.
+This structure will be used to generate graphs/charts and some basic statistics for the user to view.
+
+Below is the object returned from class methods. Note: all methods will return this type, only the information contained will vary.
+
+HashMap<String, HashMap<Integer, Integer[]>>,
+
+Imported Libraries:
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+
+Basic assignment usage and access for returned object
+
+		//Intialize primary hashmap
+		Map<String, Map<Integer, Integer[]>> productSalesMMYY = new HashMap<String, Map<Integer, Integer[]>>();
+
+		//Intialize secondary hashmap
+		Map<Integer, Integer[]> map = new HashMap<Integer, Integer[]>();
+	
+		//Intialize IntegerArray with specified value based on requested output
+		Integer[] monthlySales = new Integer[12];
+		
+		//assign secondary map to primary key
+		productSalesMMYY.put("Name", map);
+		
+		//assign integer array to secondary map
+		map.put(2011, monthlySales);
+		
+		//assign index 0 if integer array
+		productSalesMMYY.get("Name").get(2014)[0] = 1;
+		
+		Example of looping through values and print to console for returned object:
+		
+		//initialize map to store return
+		Map<String, Map<Integer, Integer[]>> employeeMMYY = ExtractData.EmployeeSalesQtrly(SalesApp.employeeList, SalesApp.salesList);
+				
+		//loop through keys in main map
+		for(String key: employeeMMYY.keySet())
+		{
+			Map<Integer, Integer[]> innerMap = employeeMMYY.get(key);
+					
+			for(Integer innerKey : innerMap.keySet())
+			{
+				//get array from map value
+				Integer[] marray = (Integer[]) innerMap.get(innerKey);
+				
+				//loop through array and print values
+				for(int i = 0; i < marray.length; i++)
+				{
+					System.out.println("Employee " + key + " Q " + (i + 1) + " " + innerKey + " Sales: " + marray[i]);	
+				}
+			}
+		}
+		
+ExtractData Class Methods and input parameters.
+		
+//Returns Map of product sales organized by month and year. Map<ProductName,<Year,Month[Sales]>>
+//the index of the month array will represent the month of the year and the value the total sales.
+public static Map<String, HashMap<Integer, Integer[]> productSalesMMYY(List<Products>, List<Sales>)	
+
+//Returns map of products sales organized by quarter and year. Map<ProductName,<Year,Quarter[Sales]>>
+public static HashMap<String, HashMap<Integer, Integer[]> productSalesQtrly(List<Products>, List<Sales>)
+
+//Returns map of product sales organized annually. Map<ProductName,<Year,Year[Sales]>>
+public static HashMap<String, HashMap<Integer, Integer[]> productSalesAnnual(List<Products>, List<Sales>)
+
+//Returns map of employee sales broken down by month and year. Map<EmployeeName,<Year,Month[Sales]>>
+public static HashMap<String, HashMap<Integer, Integer[]> EmployeeSalesMMYY(List<Employee>, List<Sales>)
+
+//returns map of employee sales broken down by quarter and year. Map<EmployeeName,<Year,Quarter[Sales]>>
+public static HashMap<String, HashMap<Integer, Integer[]> EmployeeSalesQtrly(List<Employee>, List<Sales>)
+
+//returns map of employee seles broken down annually. Map<EmployeeName,<Year,Year[Sales]>>
+public static HashMap<String, HashMap<Integer, Integer[]> EmployeeSalesAnnual(List<Employee>, List<Sales>)
+
+//Returns Map of product sales revenue organized by month and year. Map<ProductName,<Year,Month[Revenue]>>
+public static HashMap<String, HashMap<Integer, Float[]> productRevenueMMYY(List<Products>, List<Sales>)	
+
+//Returns map of products sales revenue organized by quarter and year. Map<ProductName,<Year,Quarter[Revenue]>>
+public static HashMap<String, HashMap<Integer, Float[]> productRevenueQtrly(List<Products>, List<Sales>)
+
+//Returns map of product sales revenue organized annually. Map<ProductName,<Year,Year[Revenue]>>
+public static HashMap<String, HashMap<Integer, Float[]> productRevenueAnnual(List<Products>, List<Revenue>)
+
+//Returns map of employee sales revenue broken down by month and year. Map<EmployeeName,<Year,Month[Revenue]>>
+public static HashMap<String, HashMap<Integer, Float[]> EmployeeRevenueMMYY(List<Employee>, List<Products>, List<Sales>)
+
+//returns map of employee sales revenue broken down by quarter and year. Map<EmployeeName,<Year,Quarter[Revenue]>>
+public static HashMap<String, HashMap<Integer, Float[]> EmployeeRevenueQtrly(List<Employee>, List<Products>, List<Sales>)
+
+//returns map of employee sales revenue broken down annually. Map<EmployeeName,<Year,Year[Revenue]>>
+public static HashMap<String, HashMap<Integer, Float[]> EmployeeRevenueAnnual(List<Employee>, List<Products>, List<Sales>)
+
+//returns map of employee sales of a specified product in a given year. Map<EmployeeName,<Product,Month[Sales]>>
+//The values returned will only represent that of the provided year pramater
+public static HashMap<String, HashMap<String, Integer[]> EmployeeProductSales(List<Employee>, List<Products>, List<Sales>, Int year, Int productId)
