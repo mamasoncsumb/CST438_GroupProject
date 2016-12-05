@@ -184,7 +184,7 @@ public class ExtractData {
 						mainMap.get(mainKey).put(innerKey, myArray);
 					}
 					
-					//adds sold qty of products by employee based on year anad month sold
+					//adds sold qty of products by employee based on year and month sold
 					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() - 1]= s.getqtySold();
 				}
 			}
