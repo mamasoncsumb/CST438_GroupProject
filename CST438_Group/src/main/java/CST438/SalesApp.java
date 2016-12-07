@@ -72,6 +72,137 @@ public class SalesApp {
 		return result;
 	}
 	
+	@GET
+	@Produces({MediaType.TEXT_HTML})
+	public String welcomePage()
+	{
+		getProducts();
+		getEmployees();
+		getSales();
+		return UserInterface.welcomeMat();
+		
+	}
+	
+	@GET
+	@Path("/annualProductSales")
+	@Produces({MediaType.TEXT_HTML})
+	public String annualProductSales()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Annual Product Sales", min, max, avg);	
+	}
+	
+	@GET
+	@Path("/annualEmployeeSales")
+	@Produces({MediaType.TEXT_HTML})
+	public String annualEmployeeSales()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Annual Employee Sales", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/QtrlyProductSales")
+	@Produces({MediaType.TEXT_HTML})
+	public String QtrlyProductSales()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Qtrly Product Sales", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/QtrlyEmployeeSales")
+	@Produces({MediaType.TEXT_HTML})
+	public String QtrlyEmployeeSales()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Qtrly Employee Sales", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/MonthlyProductSales")
+	@Produces({MediaType.TEXT_HTML})
+	public String MonthlyProductSales()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Monthly Product Sales", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/MonthlyEmployeeSales")
+	@Produces({MediaType.TEXT_HTML})
+	public String MonthlyEmployeeSales()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Monthly Employee Sales", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/annualProductRevenue")
+	@Produces({MediaType.TEXT_HTML})
+	public String annualProductRevenue()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Annual Product Revenue", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/annualEmployeeRevenue")
+	@Produces({MediaType.TEXT_HTML})
+	public String annualEmployeeRevenue()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Annual Employee Revenue", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/QtrlyProductRevenue")
+	@Produces({MediaType.TEXT_HTML})
+	public String QtrlyProductRevenue()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Qtrly Product Revenue", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/QtrlyEmployeeRevenue")
+	@Produces({MediaType.TEXT_HTML})
+	public String QtrlyEmployeeRevenue()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Qtrly Employee Revenue", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/MonthlyProductRevenue")
+	@Produces({MediaType.TEXT_HTML})
+	public String MonthlyProductRevenue()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Monthly Product Revenue", min, max, avg);		
+	}
+	
+	@GET
+	@Path("/MonthlyEmployeeRevenue")
+	@Produces({MediaType.TEXT_HTML})
+	public String MonthlyEmployeeRevenue()
+	{
+		float min = 100, max=5000, avg = 2500;
+		
+		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Monthly Employee Revenue", min, max, avg);		
+	}
+	
 	public void testLists()
 	{
 		for(Products product:this.productList)
