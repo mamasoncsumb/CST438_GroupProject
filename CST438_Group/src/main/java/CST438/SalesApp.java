@@ -1,5 +1,6 @@
 package CST438;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,6 +13,8 @@ import javax.persistence.Persistence;
 import javax.persistence.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
 
 
 @Path("/sales")
@@ -73,12 +76,26 @@ public class SalesApp {
 	}
 	
 	@GET
+	@Path("/get/{imgName}")
+	@Produces("image/*")
+	public Response getFile(@PathParam("imgName") String imgName) {
+
+	    File file = new File("C:\\\\images\\" + imgName);
+
+	    javax.ws.rs.core.Response.ResponseBuilder response = Response.ok((Object) file);
+	    response.header("Content-Disposition",
+	        "attachment; filename=image_from_server.png");
+	    return response.build();
+	}
+	
+	@GET
 	@Produces({MediaType.TEXT_HTML})
 	public String welcomePage()
 	{
 		getProducts();
 		getEmployees();
 		getSales();
+		First.productSalesByMonth();
 		return UserInterface.welcomeMat();
 		
 	}
@@ -90,7 +107,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Annual Product Sales", min, max, avg);	
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Product Sales", min, max, avg);	
 	}
 	
 	@GET
@@ -100,7 +117,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Annual Employee Sales", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Employee Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -110,7 +127,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Qtrly Product Sales", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Product Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -120,7 +137,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Qtrly Employee Sales", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Employee Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -130,7 +147,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Monthly Product Sales", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Product Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -140,7 +157,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Monthly Employee Sales", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Employee Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -150,7 +167,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Annual Product Revenue", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Product Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -160,7 +177,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Annual Employee Revenue", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Employee Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -170,7 +187,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Qtrly Product Revenue", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Product Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -180,7 +197,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Qtrly Employee Revenue", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Employee Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -190,7 +207,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Monthly Product Revenue", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Product Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -200,7 +217,7 @@ public class SalesApp {
 	{
 		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("C:\\Users\\mm936604\\Documents\\2.34.png", "Monthly Employee Revenue", min, max, avg);		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Employee Revenue", min, max, avg);		
 	}
 	
 	public void testLists()
