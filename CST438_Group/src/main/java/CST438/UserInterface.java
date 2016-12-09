@@ -1,12 +1,14 @@
 package CST438;
 
+import java.io.File;
+
 public class UserInterface {
 	
 	public static String welcomeMat()
 	{
 		return "<html><body>"
 				+ "<h2>Welcome to the sales app</h2>"
-				+ "please select the data to view"
+				+ "please select the data to view<br>"
 				+ selectionList()
 				+ "</body></html>";
 	}
@@ -36,7 +38,8 @@ public class UserInterface {
 
 	public static String graphVeiw(String graphName, String pageName, float min, float max, float avg)
 	{
-		return "<html><body>"
+		return  "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">"
+				+"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\"><title>Sales App</title></head><body>"
 				+ "<h2>" + pageName + "</h2>"
 				+ "<div>"
 				+ "<div style=\"float:left;width:50%\">"
@@ -47,4 +50,11 @@ public class UserInterface {
 				+ "Min: " + min + " Max: " + max + " Avg: " + avg
 				+ "</div></body></html>";
 	}
+	
+	public static File getImage(String graphName)
+	{
+	    File repositoryFile = new File("c:/temp/myfile.png");
+	    return repositoryFile;
+	}
+
 }
