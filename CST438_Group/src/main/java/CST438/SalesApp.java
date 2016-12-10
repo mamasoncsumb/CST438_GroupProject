@@ -95,7 +95,8 @@ public class SalesApp {
 		getProducts();
 		getEmployees();
 		getSales();
-		First.productSalesByMonth();
+		//Graph.productSalesByMonth(ExtractData.EmployeeSalesMMYY(getEmployees(), getSales()));
+		//First.productSalesByMonth();
 		return UserInterface.welcomeMat();
 		
 	}
@@ -106,8 +107,8 @@ public class SalesApp {
 	public String annualProductSales()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Product Sales", min, max, avg);	
+		Graph.productSalesByYear(ExtractData.productSalesAnnual(getProducts(), getSales()));
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productSalesByYear.png", "Annual Product Sales", min, max, avg);	
 	}
 	
 	@GET
@@ -116,8 +117,8 @@ public class SalesApp {
 	public String annualEmployeeSales()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Employee Sales", min, max, avg);		
+		Graph.productSalesByYear(ExtractData.EmployeeSalesAnnual(getEmployees(), getSales()));
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeSalesByYear.png", "Annual Employee Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -126,8 +127,8 @@ public class SalesApp {
 	public String QtrlyProductSales()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Product Sales", min, max, avg);		
+		Graph.productSalesByQtr(ExtractData.productSalesQtrly(getProducts(), getSales()));
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productSalesByQtr.png", "Qtrly Product Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -136,8 +137,8 @@ public class SalesApp {
 	public String QtrlyEmployeeSales()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Employee Sales", min, max, avg);		
+		Graph.employeeSalesByQtr(ExtractData.EmployeeSalesQtrly(getEmployees(), getSales()));	
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeSalesByQtr.png", "Qtrly Employee Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -146,8 +147,8 @@ public class SalesApp {
 	public String MonthlyProductSales()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Product Sales", min, max, avg);		
+		Graph.productSalesByMonth(ExtractData.productSalesMMYY(getProducts(), getSales()));		
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productSalesByMonth.png", "Monthly Product Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -156,8 +157,8 @@ public class SalesApp {
 	public String MonthlyEmployeeSales()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Employee Sales", min, max, avg);		
+		Graph.employeeSalesByMonth(ExtractData.EmployeeSalesMMYY(getEmployees(), getSales()));
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeSalesByMonth.png", "Monthly Employee Sales", min, max, avg);		
 	}
 	
 	@GET
@@ -166,8 +167,8 @@ public class SalesApp {
 	public String annualProductRevenue()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Product Revenue", min, max, avg);		
+		Graph.productRevenueByYear(ExtractData.productRevenueMMYY(getProducts(), getSales()));
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productRevenueByYear.png", "Annual Product Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -176,8 +177,8 @@ public class SalesApp {
 	public String annualEmployeeRevenue()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Employee Revenue", min, max, avg);		
+		Graph.employeeRevenueByYear(ExtractData.EmployeeRevenueMMYY(getEmployees(), getProducts(), getSales()));
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeRevenueByYear.png", "Annual Employee Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -186,8 +187,8 @@ public class SalesApp {
 	public String QtrlyProductRevenue()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Product Revenue", min, max, avg);		
+		Graph.productRevenueByQtr(ExtractData.productRevenueQtrly(getProducts(), getSales()));
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productRevenueByQtr.png", "Qtrly Product Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -196,8 +197,8 @@ public class SalesApp {
 	public String QtrlyEmployeeRevenue()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Employee Revenue", min, max, avg);		
+		Graph.employeeRevenueByQtr(ExtractData.EmployeeRevenueQtrly(getEmployees(), getProducts(), getSales()));
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeRevenueByQtr.png", "Qtrly Employee Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -206,8 +207,8 @@ public class SalesApp {
 	public String MonthlyProductRevenue()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Product Revenue", min, max, avg);		
+		Graph.productRevenueByQtr(ExtractData.productRevenueMMYY(getProducts(), getSales()));
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productRevenueByQtr.png", "Monthly Product Revenue", min, max, avg);		
 	}
 	
 	@GET
@@ -216,7 +217,7 @@ public class SalesApp {
 	public String MonthlyEmployeeRevenue()
 	{
 		float min = 100, max=5000, avg = 2500;
-		
+		Graph.employeeRevenueByMonth(ExtractData.EmployeeRevenueMMYY(getEmployees(), getProducts(), getSales()));
 		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Employee Revenue", min, max, avg);		
 	}
 	
