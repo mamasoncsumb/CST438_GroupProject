@@ -47,7 +47,7 @@ public class UserInterface {
 				+ "</div>"
 				+ selectionList()
 				+ "<h3> Statistics <h3>"
-				+ "Min: " + min + " Max: " + max + " Avg: " + avg
+				+ "Min: $" + min + " Max: $" + max + " Avg: $" + avg
 				+ "</div></body></html>";
 	}
 	

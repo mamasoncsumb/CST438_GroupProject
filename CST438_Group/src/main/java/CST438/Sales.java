@@ -52,9 +52,10 @@ public class Sales {
 		return datesold.getMonth();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public int getYearSold()
 	{
-		return datesold.getYear();
+		return datesold.getYear()+1900;
 	}
 	
 	public void setProductId(int productId)
