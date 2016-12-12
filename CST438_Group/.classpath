@@ -28,5 +28,9 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/jfreechart-1.0.19/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/jfreechart-1.0.19/jfreechart-1.0.19/lib/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="C:/jfreechart-1.0.19/jfreechart-1.0.19/lib/jfreechart-1.0.19-experimental.jar"/>
+	<classpathentry kind="lib" path="C:/jfreechart-1.0.19/jfreechart-1.0.19/lib/jfreechart-1.0.19-swt.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
