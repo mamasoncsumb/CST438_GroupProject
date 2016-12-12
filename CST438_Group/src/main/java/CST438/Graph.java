@@ -47,7 +47,7 @@ public class Graph{
 			
 		}	
 		
-		JFreeChart chart = ChartFactory.createMultiplePieChart3D("Years", catSet, TableOrder.BY_COLUMN, false, true, false);
+		JFreeChart chart = ChartFactory.createMultiplePieChart3D("Product Sales by Year", catSet, TableOrder.BY_COLUMN, false, true, false);
 		MultiplePiePlot plot = (MultiplePiePlot) chart.getPlot();
         JFreeChart subchart = plot.getPieChart();
         PiePlot p = (PiePlot) subchart.getPlot();
@@ -86,7 +86,7 @@ public class Graph{
 			
 		}	
 		
-		JFreeChart chart = ChartFactory.createMultiplePieChart3D("Years", catSet, TableOrder.BY_COLUMN, false, true, false);
+		JFreeChart chart = ChartFactory.createMultiplePieChart3D("Employee Sales by Year", catSet, TableOrder.BY_COLUMN, false, true, false);
 		MultiplePiePlot plot = (MultiplePiePlot) chart.getPlot();
         JFreeChart subchart = plot.getPieChart();
         PiePlot p = (PiePlot) subchart.getPlot();
@@ -100,6 +100,152 @@ public class Graph{
         
         File file = new File("C:\\\\images\\" + "employeeSalesByYear.png");
         
+        try {
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void productSalesByQtr(Map<String, Map<Integer, Integer[]>> mainMap)
+	{	
+		DefaultCategoryDataset catSet = new DefaultCategoryDataset();
+		
+		for(String key: mainMap.keySet())
+		{
+			Map<Integer, Integer[]> innerMapping = mainMap.get(key);
+			
+			for(Integer innerKey : innerMapping.keySet())
+			{
+				String[] seasons = {"-1st", "-2nd", "-3rd", "-4th"};
+				for (int i=0; i<4; i++)
+				{
+					Integer[] marray = (Integer[]) innerMapping.get(innerKey);
+					catSet.addValue((double)marray[i], key, innerKey + seasons[i]);
+				}
+			}
+			
+		}
+		
+		JFreeChart chart = ChartFactory.createBarChart3D("Product Sales by Qtr", "Fiscal Quarter", "Units", catSet);
+		CategoryPlot plot = (CategoryPlot) chart.getPlot();
+       
+        
+        //ChartFrame chart2 = new ChartFrame("Product Sales by Qtr", chart);
+        //chart2.pack();
+        //chart2.setVisible(true);
+        
+        File file = new File("C:\\\\images\\" + "productSalesByQtr.png");
+        
+        try {
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void employeeSalesByQtr(Map<String, Map<Integer, Integer[]>> mainMap)
+	{	
+		DefaultCategoryDataset catSet = new DefaultCategoryDataset();
+		
+		for(String key: mainMap.keySet())
+		{
+			Map<Integer, Integer[]> innerMapping = mainMap.get(key);
+			
+			for(Integer innerKey : innerMapping.keySet())
+			{
+				String[] seasons = {"-1st", "-2nd", "-3rd", "-4th"};
+				for (int i=0; i<4; i++)
+				{
+					Integer[] marray = (Integer[]) innerMapping.get(innerKey);
+					catSet.addValue((double)marray[i], key, innerKey + seasons[i]);
+				}
+			}
+			
+		}
+		
+		JFreeChart chart = ChartFactory.createBarChart3D("Employee Sales by Qtr", "Fiscal Quarter", "Units", catSet);
+		CategoryPlot plot = (CategoryPlot) chart.getPlot();
+       
+        
+        //ChartFrame chart2 = new ChartFrame("Employee Sales by Qtr", chart);
+        //chart2.pack();
+        //chart2.setVisible(true);
+        
+        File file = new File("C:\\\\images\\" + "employeeSalesByQtr.png");
+        
+        try {
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void productSalesByMonth(Map<String, Map<Integer, Integer[]>> mainMap)
+	{	
+		DefaultCategoryDataset catSet = new DefaultCategoryDataset();
+		
+		for(String key: mainMap.keySet())
+		{
+			Map<Integer, Integer[]> innerMapping = mainMap.get(key);
+			
+			for(Integer innerKey : innerMapping.keySet())
+			{
+				String[] seasons = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+				for (int i=0; i<12; i++)
+				{
+					Integer[] marray = (Integer[]) innerMapping.get(innerKey);
+					catSet.addValue((double)marray[i], key, innerKey + seasons[i]);
+				}
+			}
+			
+		}
+		
+		JFreeChart chart = ChartFactory.createLineChart("Product Sales by Month", "Month", "Units", catSet);
+		CategoryPlot plot = (CategoryPlot) chart.getPlot();
+		
+		//ChartFrame chart2 = new ChartFrame("Product Sales by Month", chart);
+        //chart2.pack();
+        //chart2.setVisible(true);
+        
+        File file = new File("C:\\\\images\\" + "productSalesByMonth.png");
+       
+        try {
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}	
+	
+	public static void employeeSalesByMonth(Map<String, Map<Integer, Integer[]>> mainMap)
+	{	
+		DefaultCategoryDataset catSet = new DefaultCategoryDataset();
+		
+		for(String key: mainMap.keySet())
+		{
+			Map<Integer, Integer[]> innerMapping = mainMap.get(key);
+			
+			for(Integer innerKey : innerMapping.keySet())
+			{
+				String[] seasons = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+				for (int i=0; i<12; i++)
+				{
+					Integer[] marray = (Integer[]) innerMapping.get(innerKey);
+					catSet.addValue((double)marray[i], key, innerKey + seasons[i]);
+				}
+			}
+			
+		}
+		
+		JFreeChart chart = ChartFactory.createLineChart("Employee Sales by Month", "Month", "Units", catSet);
+		CategoryPlot plot = (CategoryPlot) chart.getPlot();
+		
+		//ChartFrame chart2 = new ChartFrame("Employee Sales by Month", chart);
+        //chart2.pack();
+        //chart2.setVisible(true);
+        
+        File file = new File("C:\\\\images\\" + "employeeSalesByMonth.png");
+       
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
@@ -184,73 +330,36 @@ public class Graph{
 			e.printStackTrace();
 		}
 	}
-	
-	public static void productSalesByQtr(Map<String, Map<Integer, Integer[]>> mainMap)
+
+	public static void productRevenueByQtr(Map<String, Map<Integer, Float[]>> mainMap)
 	{	
 		DefaultCategoryDataset catSet = new DefaultCategoryDataset();
 		
 		for(String key: mainMap.keySet())
 		{
-			Map<Integer, Integer[]> innerMapping = mainMap.get(key);
+			Map<Integer, Float[]> innerMapping = mainMap.get(key);
 			
 			for(Integer innerKey : innerMapping.keySet())
 			{
 				String[] seasons = {"-1st", "-2nd", "-3rd", "-4th"};
 				for (int i=0; i<4; i++)
 				{
-					Integer[] marray = (Integer[]) innerMapping.get(innerKey);
+					Float[] marray = (Float[]) innerMapping.get(innerKey);
 					catSet.addValue((double)marray[i], key, innerKey + seasons[i]);
 				}
 			}
 			
 		}
 		
-		JFreeChart chart = ChartFactory.createBarChart3D("Product Sales by Qtr", "Fiscal Quarter", "Units", catSet);
+		JFreeChart chart = ChartFactory.createBarChart3D("Product Revenue by Qtr", "Fiscal Quarter", "Units", catSet);
 		CategoryPlot plot = (CategoryPlot) chart.getPlot();
        
         
-        //ChartFrame chart2 = new ChartFrame("Product Sales by Qtr", chart);
+        //ChartFrame chart2 = new ChartFrame("Product Revenue by Qtr", chart);
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "productSalesByQtr.png");
-        
-        try {
-			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}	
-	
-	public static void employeeSalesByQtr(Map<String, Map<Integer, Integer[]>> mainMap)
-	{	
-		DefaultCategoryDataset catSet = new DefaultCategoryDataset();
-		
-		for(String key: mainMap.keySet())
-		{
-			Map<Integer, Integer[]> innerMapping = mainMap.get(key);
-			
-			for(Integer innerKey : innerMapping.keySet())
-			{
-				String[] seasons = {"-1st", "-2nd", "-3rd", "-4th"};
-				for (int i=0; i<4; i++)
-				{
-					Integer[] marray = (Integer[]) innerMapping.get(innerKey);
-					catSet.addValue((double)marray[i], key, innerKey + seasons[i]);
-				}
-			}
-			
-		}
-		
-		JFreeChart chart = ChartFactory.createBarChart3D("Employee Sales by Qtr", "Fiscal Quarter", "Units", catSet);
-		CategoryPlot plot = (CategoryPlot) chart.getPlot();
-       
-        
-        //ChartFrame chart2 = new ChartFrame("Employee Sales by Qtr", chart);
-        //chart2.pack();
-        //chart2.setVisible(true);
-        
-        File file = new File("C:\\\\images\\" + "employeeSalesByQtr.png");
+        File file = new File("C:\\\\images\\" + "productRevenueByQtr.png");
         
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -294,79 +403,6 @@ public class Graph{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static void productRevenueByQtr(Map<String, Map<Integer, Float[]>> mainMap)
-	{	
-		DefaultCategoryDataset catSet = new DefaultCategoryDataset();
-		
-		for(String key: mainMap.keySet())
-		{
-			Map<Integer, Float[]> innerMapping = mainMap.get(key);
-			
-			for(Integer innerKey : innerMapping.keySet())
-			{
-				String[] seasons = {"-1st", "-2nd", "-3rd", "-4th"};
-				for (int i=0; i<4; i++)
-				{
-					Float[] marray = (Float[]) innerMapping.get(innerKey);
-					catSet.addValue((double)marray[i], key, innerKey + seasons[i]);
-				}
-			}
-			
-		}
-		
-		JFreeChart chart = ChartFactory.createBarChart3D("Product Revenue by Qtr", "Fiscal Quarter", "Units", catSet);
-		CategoryPlot plot = (CategoryPlot) chart.getPlot();
-       
-        
-        //ChartFrame chart2 = new ChartFrame("Product Revenue by Qtr", chart);
-        //chart2.pack();
-        //chart2.setVisible(true);
-        
-        File file = new File("C:\\\\images\\" + "productRevenueByQtr.png");
-        
-        try {
-			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}	
-	
-	public static void productSalesByMonth(Map<String, Map<Integer, Integer[]>> mainMap)
-	{	
-		DefaultCategoryDataset catSet = new DefaultCategoryDataset();
-		
-		for(String key: mainMap.keySet())
-		{
-			Map<Integer, Integer[]> innerMapping = mainMap.get(key);
-			
-			for(Integer innerKey : innerMapping.keySet())
-			{
-				String[] seasons = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-				for (int i=0; i<12; i++)
-				{
-					Integer[] marray = (Integer[]) innerMapping.get(innerKey);
-					catSet.addValue((double)marray[i], key, innerKey + seasons[i]);
-				}
-			}
-			
-		}
-		
-		JFreeChart chart = ChartFactory.createLineChart("Product Sales by Month", "Month", "Units", catSet);
-		CategoryPlot plot = (CategoryPlot) chart.getPlot();
-		
-		//ChartFrame chart2 = new ChartFrame("Product Sales by Month", chart);
-        //chart2.pack();
-        //chart2.setVisible(true);
-        
-        File file = new File("C:\\\\images\\" + "productSalesByMonth.png");
-       
-        try {
-			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
 	}	
 	
 	//productRevenueByMonth(prmMap);
@@ -404,42 +440,6 @@ public class Graph{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
-	}
-	
-	public static void employeeSalesByMonth(Map<String, Map<Integer, Integer[]>> mainMap)
-	{	
-		DefaultCategoryDataset catSet = new DefaultCategoryDataset();
-		
-		for(String key: mainMap.keySet())
-		{
-			Map<Integer, Integer[]> innerMapping = mainMap.get(key);
-			
-			for(Integer innerKey : innerMapping.keySet())
-			{
-				String[] seasons = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
-				for (int i=0; i<12; i++)
-				{
-					Integer[] marray = (Integer[]) innerMapping.get(innerKey);
-					catSet.addValue((double)marray[i], key, innerKey + seasons[i]);
-				}
-			}
-			
-		}
-		
-		JFreeChart chart = ChartFactory.createLineChart("Employee Sales by Month", "Month", "Units", catSet);
-		CategoryPlot plot = (CategoryPlot) chart.getPlot();
-		
-		//ChartFrame chart2 = new ChartFrame("Employee Sales by Month", chart);
-        //chart2.pack();
-        //chart2.setVisible(true);
-        
-        File file = new File("C:\\\\images\\" + "employeeSalesByMonth.png");
-       
-        try {
-			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	//employeeRevenueByMonth(ermMap);
