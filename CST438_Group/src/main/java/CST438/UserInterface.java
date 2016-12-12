@@ -16,7 +16,7 @@ public class UserInterface {
 	
 	public static String selectionList()
 	{
-		return  "<div style=\"float:left;width:50%\">"
+		return  "<div style=\"float:left;width:25%\">"
 				+ "<H3>Data Filter</H3>"
 				+ "<form name=\"listboxnav\"> "
 				+ " <select name=\"link\" size=\"8\" multiple=\"/multiple/\" onChange=\"location=document.listboxnav.link.options "
@@ -42,7 +42,7 @@ public class UserInterface {
 				+"<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\"><title>Sales App</title></head><body>"
 				+ "<h2>" + pageName + "</h2>"
 				+ "<div>"
-				+ "<div style=\"float:left;width:50%\">"
+				+ "<div style=\"float:left;width:75%\">"
 				+ "<img src=\"" + graphName + "\" style=\"width:75%;height:75%;\">"
 				+ "</div>"
 				+ selectionList()

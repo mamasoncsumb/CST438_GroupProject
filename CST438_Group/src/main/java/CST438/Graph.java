@@ -62,7 +62,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "productSalesByYear.png");
         
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -101,7 +101,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "employeeSalesByYear.png");
         
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -140,7 +140,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "productRevenueByYear.png");
         
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -179,7 +179,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "employeeRevenueByYear.png");
         
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -216,7 +216,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "productSalesByQtr.png");
         
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -253,7 +253,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "employeeSalesByQtr.png");
         
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -290,7 +290,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "employeeRevenueByQtr.png");
         
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -327,7 +327,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "productRevenueByQtr.png");
         
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -363,7 +363,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "productSalesByMonth.png");
        
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
@@ -400,7 +400,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "productRevenueByMonth.png");
        
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	
@@ -436,7 +436,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "employeeSalesByMonth.png");
        
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -473,7 +473,7 @@ public class Graph{
         File file = new File("C:\\\\images\\" + "employeeRevenueByMonth.png");
        
         try {
-			ChartUtilities.saveChartAsPNG(file, chart, 538, 538);
+			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}	

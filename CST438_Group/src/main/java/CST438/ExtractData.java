@@ -21,7 +21,8 @@ public class ExtractData {
 				if(p.getProductid() == s.getProductId())
 				{
 					String mainKey = p.getproductName();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;;
 					
 					//assign new key if it does not exist in main Map
 					if(!mainMap.containsKey(mainKey))
@@ -31,7 +32,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{		
 						Integer[] myArray = new Integer[1];
 
@@ -66,7 +67,8 @@ public class ExtractData {
 				if(e.getEmpid() == s.getEmpId())
 				{
 					String mainKey = e.getFirstname().charAt(0) + "." + e.getLastname();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					
 					//assign new key if it does not exist in main Map
 					if(!mainMap.containsKey(mainKey))
@@ -76,7 +78,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Integer[] myArray = new Integer[1];
 						
@@ -111,7 +113,8 @@ public class ExtractData {
 				if(p.getProductid() == s.getProductId())
 				{
 					String mainKey = p.getproductName();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					
 					//assign new key if it does not exist in main Map
 					if(!mainMap.containsKey(mainKey))
@@ -121,7 +124,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Integer[] myArray = new Integer[12];
 						
@@ -136,7 +139,7 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products based on year and month sold
-					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() - 1]= s.getqtySold();
+					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() ]= s.getqtySold();
 				}
 			}
 		}
@@ -157,7 +160,8 @@ public class ExtractData {
 				if(e.getEmpid() == s.getEmpId())
 				{
 					String mainKey = e.getFirstname().charAt(0) + "." + e.getLastname();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					
 					//assign new key if it does not exist in main Map
 					if(!mainMap.containsKey(mainKey))
@@ -167,7 +171,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Integer[] myArray = new Integer[12];
 						
@@ -181,7 +185,7 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products by employee based on year and month sold
-					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() - 1]= s.getqtySold();
+					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() ]= s.getqtySold();
 				}
 			}
 		}
@@ -202,7 +206,8 @@ public class ExtractData {
 				if(p.getProductid() == s.getProductId())
 				{
 					String mainKey = p.getproductName();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					Integer month = s.getMonthSold();
 					
 					//assign new key if it does not exist in main Map
@@ -213,7 +218,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Integer[] myArray = new Integer[4];
 						
@@ -227,10 +232,10 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products by product based on year and quarter
-					mainMap.get(mainKey).get(innerKey)[0] += (month == 1 || month == 2 || month == 3 ) ? s.getqtySold() : 0;
-					mainMap.get(mainKey).get(innerKey)[1] += (month == 4 || month == 5 || month == 6 ) ? s.getqtySold() : 0;
-					mainMap.get(mainKey).get(innerKey)[2] += (month == 7 || month == 8 || month == 9 ) ? s.getqtySold() : 0;
-					mainMap.get(mainKey).get(innerKey)[3] += (month == 10 || month == 11 || month == 12 ) ? s.getqtySold() : 0;
+					mainMap.get(mainKey).get(innerKey)[0] += ((month == 0) || (month == 1) || (month == 2) ) ? s.getqtySold() : 0;
+					mainMap.get(mainKey).get(innerKey)[1] += (month == 3 || month == 4 || month == 5 ) ? s.getqtySold() : 0;
+					mainMap.get(mainKey).get(innerKey)[2] += (month == 6 || month == 7 || month == 8 ) ? s.getqtySold() : 0;
+					mainMap.get(mainKey).get(innerKey)[3] += (month == 9 || month == 10 || month == 11 ) ? s.getqtySold() : 0;
 				}
 			}
 		}
@@ -242,7 +247,7 @@ public class ExtractData {
 	public static Map<String, Map<Integer, Integer[]>> EmployeeSalesQtrly(List<Employee> employee, List<Sales> sales)
 	{
 		Map<String, Map<Integer, Integer[]>> mainMap = new HashMap<String, Map<Integer, Integer[]>>();
-		
+		int testcounter = 0;
 		//loop through lists and set keys and associated values
 		for(Employee e: employee)
 		{
@@ -251,7 +256,8 @@ public class ExtractData {
 				if(e.getEmpid() == s.getEmpId())
 				{
 					String mainKey = e.getFirstname().charAt(0) + "." + e.getLastname();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					Integer month = s.getMonthSold();
 					
 					//assign new key if it does not exist in main Map
@@ -262,9 +268,8 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
-						System.out.println("create new array for" + mainKey + " " + innerKey);
 						Integer[] myArray = new Integer[4];
 						
 						//initialize array values to 0
@@ -276,10 +281,10 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products by employee based on year and quarter
-					mainMap.get(mainKey).get(innerKey)[0] += ((month == 1) || (month == 2) || (month == 3) ) ? s.getqtySold() : 0;
-					mainMap.get(mainKey).get(innerKey)[1] += (month == 4 || month == 5 || month == 6 ) ? s.getqtySold() : 0;
-					mainMap.get(mainKey).get(innerKey)[2] += (month == 7 || month == 8 || month == 9 ) ? s.getqtySold() : 0;
-					mainMap.get(mainKey).get(innerKey)[3] += (month == 10 || month == 11 || month == 12 ) ? s.getqtySold() : 0;
+					mainMap.get(mainKey).get(innerKey)[0] += ((month == 0) || (month == 1) || (month == 2) ) ? s.getqtySold() : 0;
+					mainMap.get(mainKey).get(innerKey)[1] += (month == 3 || month == 4 || month == 5 ) ? s.getqtySold() : 0;
+					mainMap.get(mainKey).get(innerKey)[2] += (month == 6 || month == 7 || month == 8 ) ? s.getqtySold() : 0;
+					mainMap.get(mainKey).get(innerKey)[3] += (month == 9 || month == 10 || month == 11 ) ? s.getqtySold() : 0;
 				}
 			}
 		}
@@ -300,7 +305,8 @@ public class ExtractData {
 				if(p.getProductid() == s.getProductId())
 				{
 					String mainKey = p.getproductName();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					float price = p.getProductPrice();
 					
 					//assign new key if it does not exist in main Map
@@ -311,7 +317,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Float[] myArray = new Float[1];
 						
@@ -346,7 +352,8 @@ public class ExtractData {
 				if(e.getEmpid() == s.getEmpId())
 				{
 					String mainKey = e.getFirstname().charAt(0) + "." + e.getLastname();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					float price = 0;
 					
 					for(Products p: products)
@@ -364,7 +371,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Float[] myArray = new Float[1];
 						
@@ -399,7 +406,8 @@ public class ExtractData {
 				if(p.getProductid() == s.getProductId())
 				{
 					String mainKey = p.getproductName();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					float price = p.getProductPrice();
 					
 					//assign new key if it does not exist in main Map
@@ -410,7 +418,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Float[] myArray = new Float[12];
 						
@@ -424,7 +432,7 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products based on year and month sold
-					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() - 1]= s.getqtySold() * price ;
+					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() ]= s.getqtySold() * price ;
 				}
 			}
 		}
@@ -445,7 +453,8 @@ public class ExtractData {
 				if(e.getEmpid() == s.getEmpId())
 				{
 					String mainKey = e.getFirstname().charAt(0) + "." + e.getLastname();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					float price = 0;
 					
 					for(Products p: products)
@@ -463,7 +472,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Float[] myArray = new Float[12];
 						
@@ -477,7 +486,7 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products by employee based on year anad month sold
-					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() - 1]= s.getqtySold() * price;
+					mainMap.get(mainKey).get(innerKey)[s.getMonthSold()]= s.getqtySold() * price;
 				}
 			}
 		}
@@ -498,7 +507,8 @@ public class ExtractData {
 				if(p.getProductid() == s.getProductId())
 				{
 					String mainKey = p.getproductName();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					Integer month = s.getMonthSold();
 					float price = p.getProductPrice();
 					
@@ -510,7 +520,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						
 						Float[] myArray = new Float[4];
@@ -526,10 +536,10 @@ public class ExtractData {
 					
 					//adds sold qty of products by product based on year and quarter
 					//adds sold qty of products by employee based on year and quarter
-					mainMap.get(mainKey).get(innerKey)[0] += (month == 1 || month == 2 || month == 3 ) ? (s.getqtySold() * price) : 0;
-					mainMap.get(mainKey).get(innerKey)[1] += (month == 4 || month == 5 || month == 6 ) ? (s.getqtySold() * price) : 0;
-					mainMap.get(mainKey).get(innerKey)[2] += (month == 7 || month == 8 || month == 9 ) ? (s.getqtySold() * price) : 0;
-					mainMap.get(mainKey).get(innerKey)[3] += (month == 10 || month == 11 || month == 12 ) ? (s.getqtySold() * price) : 0;
+					mainMap.get(mainKey).get(innerKey)[0] += (month == 0 || month == 1 || month == 2 ) ? (s.getqtySold() * price) : 0;
+					mainMap.get(mainKey).get(innerKey)[1] += (month == 3 || month == 4 || month == 5 ) ? (s.getqtySold() * price) : 0;
+					mainMap.get(mainKey).get(innerKey)[2] += (month == 6 || month == 7 || month == 8 ) ? (s.getqtySold() * price) : 0;
+					mainMap.get(mainKey).get(innerKey)[3] += (month == 9 || month == 10 || month == 11 ) ? (s.getqtySold() * price) : 0;
 				}
 			}
 		}
@@ -551,7 +561,8 @@ public class ExtractData {
 				if(e.getEmpid() == s.getEmpId())
 				{
 					String mainKey = e.getFirstname().charAt(0) + "." + e.getLastname();
-					Integer innerKey = s.getYearSold();
+
+					Integer innerKey = s.getYearSold() - 100;
 					Integer month = s.getMonthSold();
 					float price = 0;
 					
@@ -571,7 +582,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Float[] myArray = new Float[4];
 						//initialize array values to 0
@@ -584,10 +595,10 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products by employee based on year and quarter
-					mainMap.get(mainKey).get(innerKey)[0] += (month == 1 || month == 2 || month == 3 ) ? (s.getqtySold() * price) : 0;
-					mainMap.get(mainKey).get(innerKey)[1] += (month == 4 || month == 5 || month == 6 ) ? (s.getqtySold() * price) : 0;
-					mainMap.get(mainKey).get(innerKey)[2] += (month == 7 || month == 8 || month == 9 ) ? (s.getqtySold() * price) : 0;
-					mainMap.get(mainKey).get(innerKey)[3] += (month == 10 || month == 11 || month == 12 ) ? (s.getqtySold() * price) : 0;
+					mainMap.get(mainKey).get(innerKey)[0] += (month == 0 || month == 1 || month == 2 ) ? (s.getqtySold() * price) : 0;
+					mainMap.get(mainKey).get(innerKey)[1] += (month == 3 || month == 4 || month == 5 ) ? (s.getqtySold() * price) : 0;
+					mainMap.get(mainKey).get(innerKey)[2] += (month == 6 || month == 7 || month == 8 ) ? (s.getqtySold() * price) : 0;
+					mainMap.get(mainKey).get(innerKey)[3] += (month == 9 || month == 10 || month == 11 ) ? (s.getqtySold() * price) : 0;
 				}
 			}
 		}
@@ -629,7 +640,7 @@ public class ExtractData {
 					}
 					
 					//assign new key if it does not exist in inner Map
-					if(!mainMap.get(mainKey).containsKey(s.getYearSold()))
+					if(!mainMap.get(mainKey).containsKey(innerKey))
 					{
 						Integer[] myArray = new Integer[4];
 						
@@ -643,7 +654,7 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products by employee based on year and quarter
-					mainMap.get(mainKey).get(innerKey)[month -1] = s.getqtySold();
+					mainMap.get(mainKey).get(innerKey)[month] = s.getqtySold();
 				}
 			}
 		}
@@ -651,30 +662,4 @@ public class ExtractData {
 		return mainMap;
 	}
 	
-	public static void main(String[] args)
-	{	
-		//initialize map to store return
-		Map<String, Map<Integer, Integer[]>> employeeMMYY = ExtractData.EmployeeSalesQtrly(SalesApp.employeeList, SalesApp.salesList);
-		
-		//loop through keys in main map
-		for(String key: employeeMMYY.keySet())
-		{
-			Map<Integer, Integer[]> innerMap = employeeMMYY.get(key);
-			
-			for(Integer innerKey : innerMap.keySet())
-			{
-				//get array from map value
-				Integer[] marray = (Integer[]) innerMap.get(innerKey);
-				
-				//loop through array and print values
-				for(int i = 0; i < marray.length; i++)
-				{
-					System.out.println("Employee " + key + " " + i + "Qtr " + innerKey + " Sales: " + marray[i]);
-				
-				}
-			}
-			
-		}
-
-	}
 }

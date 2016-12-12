@@ -2,6 +2,7 @@ package CST438;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class SalesApp {
 
 		List<Products> result = (List<Products>)q.getResultList();
 		
-		this.productList = result;
+		//this.productList = result;
 		
 		return result;
 	}
@@ -52,7 +53,7 @@ public class SalesApp {
 
 		List<Employee> result = (List<Employee>)q.getResultList();
 		
-		this.employeeList = result;
+		//this.employeeList = result;
 		
 		return result;
 	}
@@ -67,12 +68,12 @@ public class SalesApp {
 
 		List<Sales> result = (List<Sales>)q.getResultList();
 		
-		this.salesList = result;
+		//this.salesList = result;
 		
-		System.out.println("Year " + result.get(0).getYearSold());
+		//System.out.println("Year " + result.get(0).getYearSold());
 		
-		testLists();
-		testExtractData();
+		//testLists();
+		//testExtractData();
 		return result;
 	}
 	
@@ -106,10 +107,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String annualProductSales()
 	{
-		float min = 100, max=5000, avg = 2500;
-		Map<String, Map<Integer,Integer[]>> map = ExtractData.productSalesAnnual(productList, salesList);
-		First.productSalesByYear(map);
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/productSalesByYear.png", "Annual Product Sales", min, max, avg);	
+		Map<String, Map<Integer,Integer[]>> map= ExtractData.productSalesAnnual(getProducts(), getSales());
+		Graph.productSalesByYear(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualSales((HashMap<String, Map<Integer, Integer[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productSalesByYear.png", "Annual Product Sales", myAnalysis.min, myAnalysis.max, myAnalysis.avg);	
 	}
 	
 	@GET
@@ -117,9 +119,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String annualEmployeeSales()
 	{
-		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Employee Sales", min, max, avg);		
+		Map<String, Map<Integer,Integer[]>> map= ExtractData.EmployeeSalesAnnual(getEmployees(), getSales());
+		Graph.employeeSalesByYear(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualSales((HashMap<String, Map<Integer, Integer[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeSalesByYear.png", "Annual Employee Sales", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -127,9 +131,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String QtrlyProductSales()
 	{
-		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Product Sales", min, max, avg);		
+		Map<String, Map<Integer,Integer[]>> map= ExtractData.productSalesQtrly(getProducts(), getSales());
+		Graph.productSalesByQtr(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualSales((HashMap<String, Map<Integer, Integer[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productSalesByQtr.png", "Qtrly Product Sales", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -137,10 +143,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String QtrlyEmployeeSales()
 	{
-		float min = 100, max=5000, avg = 2500;
-		Map<String, Map<Integer,Integer[]>> map= ExtractData.EmployeeSalesQtrly(employeeList, salesList);
-		First.employeeSalesByQtr(map);
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeSalesByQtr.png", "Qtrly Employee Sales", min, max, avg);		
+		Map<String, Map<Integer,Integer[]>> map= ExtractData.EmployeeSalesQtrly(getEmployees(), getSales());
+		Graph.employeeSalesByQtr(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualSales((HashMap<String, Map<Integer, Integer[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeSalesByQtr.png", "Qtrly Employee Sales", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -148,9 +155,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String MonthlyProductSales()
 	{
-		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Product Sales", min, max, avg);		
+		Map<String, Map<Integer,Integer[]>> map= ExtractData.productSalesMMYY(getProducts(), getSales());
+		Graph.productSalesByMonth(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualSales((HashMap<String, Map<Integer, Integer[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productSalesByMonth.png", "Monthly Product Sales", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -158,9 +167,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String MonthlyEmployeeSales()
 	{
-		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Employee Sales", min, max, avg);		
+		Map<String, Map<Integer,Integer[]>> map= ExtractData.EmployeeSalesMMYY(getEmployees(), getSales());
+		Graph.employeeSalesByMonth(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualSales((HashMap<String, Map<Integer, Integer[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeSalesByMonth.png", "Monthly Employee Sales", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -168,9 +179,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String annualProductRevenue()
 	{
-		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Product Revenue", min, max, avg);		
+		Map<String, Map<Integer,Float[]>> map= ExtractData.productRevenueAnnual(getProducts(), getSales());
+		Graph.productRevenueByYear(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualRevenue((HashMap<String, Map<Integer, Float[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productRevenueByYear.png", "Annual Product Revenue", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -178,9 +191,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String annualEmployeeRevenue()
 	{
-		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Annual Employee Revenue", min, max, avg);		
+		Map<String, Map<Integer,Float[]>> map= ExtractData.EmployeeRevenueAnnual(getEmployees(),getProducts(), getSales());
+		Graph.employeeRevenueByYear(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualRevenue((HashMap<String, Map<Integer, Float[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeRevenueByYear.png", "Annual Employee Revenue", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -188,9 +203,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String QtrlyProductRevenue()
 	{
-		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Product Revenue", min, max, avg);		
+		Map<String, Map<Integer,Float[]>> map= ExtractData.productRevenueQtrly(getProducts(), getSales());
+		Graph.productRevenueByQtr(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualRevenue((HashMap<String, Map<Integer, Float[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productRevenueByQtr.png", "Qtrly Product Revenue", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -198,9 +215,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String QtrlyEmployeeRevenue()
 	{
-		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Qtrly Employee Revenue", min, max, avg);		
+		Map<String, Map<Integer,Float[]>> map= ExtractData.EmployeeRevenueQtrly(getEmployees(),getProducts(), getSales());
+		Graph.employeeRevenueByQtr(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualRevenue((HashMap<String, Map<Integer, Float[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeRevenueByQtr.png", "Qtrly Employee Revenue", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -208,9 +227,12 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String MonthlyProductRevenue()
 	{
-		float min = 100, max=5000, avg = 2500;
 		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Product Revenue", min, max, avg);		
+		Map<String, Map<Integer,Float[]>> map= ExtractData.productRevenueMMYY(getProducts(), getSales());
+		Graph.productRevenueByMonth(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualRevenue((HashMap<String, Map<Integer, Float[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/productRevenueByMonth.png", "Monthly Product Revenue", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	@GET
@@ -218,9 +240,11 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String MonthlyEmployeeRevenue()
 	{
-		float min = 100, max=5000, avg = 2500;
-		
-		return UserInterface.graphVeiw("/CST438_Group/sales/get/234.png", "Monthly Employee Revenue", min, max, avg);		
+		Map<String, Map<Integer,Float[]>> map= ExtractData.EmployeeRevenueMMYY(getEmployees(),getProducts(), getSales());
+		Graph.employeeRevenueByMonth(map);
+		Analysis myAnalysis = new Analysis();
+		myAnalysis.processAnnualRevenue((HashMap<String, Map<Integer, Float[]>>) map);
+		return UserInterface.graphVeiw("/CST438_Group/sales/get/employeeRevenueByMonth.png", "Monthly Employee Revenue", myAnalysis.min, myAnalysis.max, myAnalysis.avg);		
 	}
 	
 	public void testLists()
@@ -246,6 +270,25 @@ public class SalesApp {
 		for(String key: employeeMMYY.keySet())
 		{
 			Map<Integer, Integer[]> innerMap = employeeMMYY.get(key);
+					
+			for(Integer innerKey : innerMap.keySet())
+			{
+				//get array from map value
+				Integer[] marray = (Integer[]) innerMap.get(innerKey);
+				
+				//loop through array and print values
+				for(int i = 0; i < marray.length; i++)
+				{
+					System.out.println("Employee " + key + " Q " + (i + 1) + " " + innerKey + " Sales: " + marray[i]);	
+				}
+			}			
+		}
+		
+		Map<String, Map<Integer, Integer[]>> employeeAnnual = ExtractData.EmployeeSalesAnnual(SalesApp.employeeList, SalesApp.salesList);
+		
+		for(String key: employeeAnnual.keySet())
+		{
+			Map<Integer, Integer[]> innerMap = employeeAnnual.get(key);
 					
 			for(Integer innerKey : innerMap.keySet())
 			{
