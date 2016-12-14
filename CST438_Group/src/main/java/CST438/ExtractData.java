@@ -139,7 +139,7 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products based on year and month sold
-          mainMap.get(mainKey).get(innerKey)[s.getMonthSold()]= s.getqtySold();
+					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() ]+= s.getqtySold();
 				}
 			}
 		}
@@ -185,7 +185,7 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products by employee based on year and month sold
-		      mainMap.get(mainKey).get(innerKey)[s.getMonthSold()]= s.getqtySold();
+					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() ] += s.getqtySold();
 				}
 			}
 		}
@@ -432,7 +432,7 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products based on year and month sold
-          mainMap.get(mainKey).get(innerKey)[s.getMonthSold()]= s.getqtySold() * price ;
+					mainMap.get(mainKey).get(innerKey)[s.getMonthSold() ] += s.getqtySold() * price ;
 				}
 			}
 		}
@@ -486,7 +486,7 @@ public class ExtractData {
 					}
 					
 					//adds sold qty of products by employee based on year anad month sold
-					mainMap.get(mainKey).get(innerKey)[s.getMonthSold()]= s.getqtySold() * price;
+					mainMap.get(mainKey).get(innerKey)[s.getMonthSold()] += s.getqtySold() * price;
 				}
 			}
 		}
