@@ -107,7 +107,6 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String annualProductSales()
 	{
-
 		Map<String, Map<Integer,Integer[]>> map= ExtractData.productSalesAnnual(getProducts(), getSales());
 		Graph.productSalesByYear(map);
 		Analysis myAnalysis = new Analysis();
@@ -228,6 +227,7 @@ public class SalesApp {
 	@Produces({MediaType.TEXT_HTML})
 	public String MonthlyProductRevenue()
 	{
+		
 		Map<String, Map<Integer,Float[]>> map= ExtractData.productRevenueMMYY(getProducts(), getSales());
 		Graph.productRevenueByMonth(map);
 		Analysis myAnalysis = new Analysis();
@@ -265,7 +265,7 @@ public class SalesApp {
 	{
 		//initialize map to store return
 		Map<String, Map<Integer, Integer[]>> employeeMMYY = ExtractData.EmployeeSalesQtrly(SalesApp.employeeList, SalesApp.salesList);
-				
+		
 		//loop through keys in main map
 		for(String key: employeeMMYY.keySet())
 		{
