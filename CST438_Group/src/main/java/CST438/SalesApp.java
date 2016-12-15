@@ -82,7 +82,7 @@ public class SalesApp {
 	@Produces("image/*")
 	public Response getFile(@PathParam("imgName") String imgName) {
 
-	    File file = new File("C:\\\\images\\" + imgName);
+	    File file = new File(imgName);
 
 	    javax.ws.rs.core.Response.ResponseBuilder response = Response.ok((Object) file);
 	    response.header("Content-Disposition",

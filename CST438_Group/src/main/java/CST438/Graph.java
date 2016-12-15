@@ -59,7 +59,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "productSalesByYear.png");
+        File file = new File("productSalesByYear.png");
         
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -98,7 +98,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "employeeSalesByYear.png");
+        File file = new File("employeeSalesByYear.png");
         
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -137,7 +137,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "productRevenueByYear.png");
+        File file = new File("productRevenueByYear.png");
         
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -176,7 +176,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "employeeRevenueByYear.png");
+        File file = new File("employeeRevenueByYear.png");
         
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -213,7 +213,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "productSalesByQtr.png");
+        File file = new File("productSalesByQtr.png");
         
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -250,7 +250,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "employeeSalesByQtr.png");
+        File file = new File("employeeSalesByQtr.png");
         
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -287,7 +287,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "employeeRevenueByQtr.png");
+        File file = new File("employeeRevenueByQtr.png");
         
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -324,7 +324,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "productRevenueByQtr.png");
+        File file = new File("productRevenueByQtr.png");
         
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -360,7 +360,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "productSalesByMonth.png");
+        File file = new File("productSalesByMonth.png");
        
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -397,7 +397,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "productRevenueByMonth.png");
+        File file = new File("productRevenueByMonth.png");
        
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -433,7 +433,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "employeeSalesByMonth.png");
+        File file = new File("employeeSalesByMonth.png");
        
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);
@@ -470,7 +470,7 @@ public class Graph{
         //chart2.pack();
         //chart2.setVisible(true);
         
-        File file = new File("C:\\\\images\\" + "employeeRevenueByMonth.png");
+        File file = new File("employeeRevenueByMonth.png");
        
         try {
 			ChartUtilities.saveChartAsPNG(file, chart, 800, 538);

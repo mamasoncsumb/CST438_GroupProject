@@ -19,7 +19,8 @@
  <property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost:3306/world"/>
  <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
  <property name="openjpa.ConnectionUserName" value="root"/>
- <property name="openjpa.ConnectionPassword" value="maso1047"/>
+ <property name="openjpa.ConnectionPassword" value="Sn0P2fBMfS-X"/>
+ <!--<property name="openjpa.ConnectionPassword" value="stephie"/>-->
  <property name="openjpa.Log" value="DefaultLevel=WARN, Tool=INFO"/>
  </properties>
  
